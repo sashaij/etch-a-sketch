@@ -9,34 +9,97 @@
 //determine size of each side to be 16
 //using flexbox
 
+
+
+document.body.style.display = 'flex';
+document.body.style.flexDirection = 'column';
+document.body.style.justifyContent = 'space-between';
+document.body.style.alignItems = 'center';
+document.body.style.height = '100vh';
+document.body.style.padding = '1.5rem 0'
+
+
+
+const buttonCont = document.createElement('div');
+buttonCont.classList.add('button-cont');
+document.body.appendChild(buttonCont);
+buttonCont.style.margin = '2rem'
+buttonCont.style.display = 'flex';
+buttonCont.style.flexDirection = 'row';
+buttonCont.style.justifyContent = 'center';
+
+const newGrid = document.createElement('button');
+newGrid.classList.add('new-grid');
+newGrid.textContent = 'Reset';
+buttonCont.appendChild(newGrid);
+newGrid.style.padding = '.5rem 2.2rem';
+newGrid.style.fontSize = '1rem';
+
+//base canvas
 const baseSquare = document.createElement('div');
 baseSquare.classList.add('base-square');
 baseSquare.style.width = '960px';
 baseSquare.style.height = '960px';
 baseSquare.style.backgroundColor = '#f6f6f6';
+baseSquare.style.margin = '1.5rem'
 
 document.body.appendChild(baseSquare);
 
-console.log('test');
-const size = 16;
-const gridSize = 960 / size;
+const newGridChoice = function () {
+    
+}
+
+
+
+//grid size
+let size = 0;
 const borderSize = .5;
-const borderReduce = borderSize * 2;
-console.log(gridSize);
-console.log(`${gridSize}`);
 
 
-const grid = function() {
+
+
+const gridValue = newGrid.addEventListener('click', function() {
+    //removes previous grid
+    for(i = 0; i < (size * size); i++) {
+        baseSquare.removeChild(baseSquare.firstChild);
+    }
+    
+
+    //size of each cell incl border
+    size = Number(prompt('Choose canvas size: '));
+
+    if(size > 100) {
+        alert('The size too large! Select smaller size please.');
+        size = Number(prompt('Choose canvas size: '));
+    }
+
+    const gridSize = (960 / size) - (borderSize * 2);
+
+    //cell forming function
+    //and changes cell color on hover
+    const grid = function() {
     const square = document.createElement('div');
     square.classList.add('square');
     square.style.border = `${borderSize}px solid black`;
     square.style.background = 'yellow';
-    square.style.height = `${gridSize - borderReduce}px`;
-    square.style.width = `${gridSize - borderReduce}px`;
+    square.style.height = `${gridSize}px`;
+    square.style.width = `${gridSize}px`;
     baseSquare.appendChild(square);
-}
+
+    square.addEventListener("mouseover", (event) => {
+        event.target.style.background = "orange";
+    })
+    }
+    //grid forming loop
+    for(i = 0; i < (size * size); i++) {
+        grid();
+    }
+});
 
 
-for(i = 0; i < (16 * 16); i++) {
-    grid();
-}
+
+
+
+
+
+//grid forming loop
