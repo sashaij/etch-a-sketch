@@ -13,10 +13,10 @@
 
 document.body.style.display = 'flex';
 document.body.style.flexDirection = 'column';
-document.body.style.justifyContent = 'space-between';
+document.body.style.justifyContent = 'space-around';
 document.body.style.alignItems = 'center';
-document.body.style.height = '100vh';
-document.body.style.padding = '1.5rem 0'
+document.body.style.height = '120vh';
+//document.body.style.padding = '1.5rem 0'
 
 
 
@@ -30,7 +30,7 @@ buttonCont.style.justifyContent = 'center';
 
 const newGrid = document.createElement('button');
 newGrid.classList.add('new-grid');
-newGrid.textContent = 'Reset';
+newGrid.textContent = 'Start/Reset';
 buttonCont.appendChild(newGrid);
 newGrid.style.padding = '.5rem 2.2rem';
 newGrid.style.fontSize = '1rem';
@@ -54,6 +54,7 @@ const newGridChoice = function () {
 //grid size
 let size = 0;
 const borderSize = .5;
+
 
 
 
@@ -85,9 +86,14 @@ const gridValue = newGrid.addEventListener('click', function() {
     square.style.height = `${gridSize}px`;
     square.style.width = `${gridSize}px`;
     baseSquare.appendChild(square);
+    
+    let colorValue = 255;
 
     square.addEventListener("mouseover", (event) => {
-        event.target.style.background = "orange";
+        //gradual cell collor filling
+        colorValue -= (colorValue / 10);
+        console.log(colorValue);
+        event.target.style.backgroundColor = `rgb(${Number(colorValue)}, ${Number(colorValue)}, ${Number(colorValue)})`;
     })
     }
     //grid forming loop
