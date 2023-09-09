@@ -20,15 +20,19 @@ document.body.appendChild(baseSquare);
 console.log('test');
 const size = 16;
 const gridSize = 960 / size;
+const borderSize = .5;
+const borderReduce = borderSize * 2;
 console.log(gridSize);
 console.log(`${gridSize}`);
+
 
 const grid = function() {
     const square = document.createElement('div');
     square.classList.add('square');
-    square.style.border = '.5px solid black';
-    square.style.height = `${gridSize}px`;
-    square.style.width = `${gridSize}px`;
+    square.style.border = `${borderSize}px solid black`;
+    square.style.background = 'yellow';
+    square.style.height = `${gridSize - borderReduce}px`;
+    square.style.width = `${gridSize - borderReduce}px`;
     baseSquare.appendChild(square);
 }
 
