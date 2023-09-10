@@ -1,15 +1,3 @@
-//crete grid 16x16
-
-//make a loop that creates 256 squares
-//within space which is 960px wide
-
-//create first div that will serve as a space
-//create other divs within this first div
-
-//determine size of each side to be 16
-//using flexbox
-
-
 
 document.body.style.display = 'flex';
 document.body.style.flexDirection = 'column';
@@ -38,6 +26,9 @@ newGrid.style.fontSize = '1rem';
 //base canvas
 const baseSquare = document.createElement('div');
 baseSquare.classList.add('base-square');
+baseSquare.style.display = 'flex';
+baseSquare.style.flexDirection = 'row';
+baseSquare.style.flexWrap = 'wrap';
 baseSquare.style.width = '960px';
 baseSquare.style.height = '960px';
 baseSquare.style.backgroundColor = '#f6f6f6';
